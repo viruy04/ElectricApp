@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectricApp", "ElectricApp\ElectricApp.csproj", "{6499B841-BD60-43CA-AB8E-A9C87DFAFAFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectricAppUnitTest", "ElectricAppUnitTest\ElectricAppUnitTest.csproj", "{B959D6A1-058F-478E-8DE3-41EE18EF8A9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6499B841-BD60-43CA-AB8E-A9C87DFAFAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6499B841-BD60-43CA-AB8E-A9C87DFAFAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6499B841-BD60-43CA-AB8E-A9C87DFAFAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6499B841-BD60-43CA-AB8E-A9C87DFAFAFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B959D6A1-058F-478E-8DE3-41EE18EF8A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B959D6A1-058F-478E-8DE3-41EE18EF8A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B959D6A1-058F-478E-8DE3-41EE18EF8A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B959D6A1-058F-478E-8DE3-41EE18EF8A9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {10CBB68D-E167-46CB-BF75-EDFC14105607}
+	EndGlobalSection
+EndGlobal

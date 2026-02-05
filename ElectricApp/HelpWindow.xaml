@@ -1,0 +1,250 @@
+﻿<Window x:Class="ElectricApp.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElectricApp"
+        mc:Ignorable="d"
+        Title="Теория постоянного тока"
+        WindowState="Maximized"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="705" Width="975">
+    <!-- Фон окна -->
+    <Window.Background>
+        <ImageBrush ImageSource="Images/Enshteyn.png" Stretch="UniformToFill"/>
+    </Window.Background>
+
+    <!-- Ресурсы со стилями -->
+    <Window.Resources>
+        <!-- Стиль округлённых кнопок -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="Background" Value="#3498DB"/>
+            <Setter Property="BorderBrush" Value="#2980B9"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#5DADE2"/>
+                    <Setter Property="Foreground" Value="#FFFACD"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Базовый стиль текста с минимальным размером 21 -->
+        <Style x:Key="BaseTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="21"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <!-- Стиль заголовков разделов -->
+        <Style x:Key="SectionHeaderStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyle}">
+            <Setter Property="FontSize" Value="27"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+
+        <!-- Стиль подзаголовков -->
+        <Style x:Key="SubHeaderStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyle}">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+        </Style>
+
+        <!-- Стиль обычного текста -->
+        <Style x:Key="NormalTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyle}">
+            <Setter Property="FontSize" Value="21"/>
+            <Setter Property="Margin" Value="0,0,0,7.5"/>
+        </Style>
+
+        <!-- Стиль текста справки -->
+        <Style x:Key="HelpTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyle}">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0,0,0,22.5"/>
+            <Setter Property="TextAlignment" Value="Justify"/>
+            <Setter Property="FontSize" Value="21"/>
+        </Style>
+
+        <!-- Стиль для меток параметров -->
+        <Style x:Key="ParameterLabelStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyle}">
+            <Setter Property="FontSize" Value="22.5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <!-- Основное содержимое окна -->
+    <Grid Margin="45 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок окна -->
+        <TextBlock Text="Теория"
+               FontSize="40.5"
+               FontWeight="Bold"
+               Foreground="White"
+               HorizontalAlignment="Center"
+               Margin="0,22.5,30,30"
+               TextWrapping="Wrap"/>
+
+        <!-- Основной контент с прокруткой -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <!-- Раздел I = q/t -->
+                <Border Background="#CCFFFFFF" CornerRadius="22.5" Padding="30" Margin="0,0,0,22.5">
+                    <StackPanel>
+                        <TextBlock Text="1. Формула I = q/t" 
+                               Style="{StaticResource SectionHeaderStyle}"
+                               Foreground="#3498DB"/>
+                        <TextBlock Style="{StaticResource HelpTextStyle}">
+                            <Run Text="Основная формула для расчета силы тока: "/>
+                            <Run Text="I = q/t" FontWeight="Bold"/>
+                            <LineBreak/><LineBreak/>
+                            <Run Text="Где:"/>
+                            <LineBreak/>
+                            <Run Text="- I - сила тока (Ампер)"/>
+                            <LineBreak/>
+                            <Run Text="- q - электрический заряд (Кулон)"/>
+                            <LineBreak/>
+                            <Run Text="- t - время прохождения заряда (секунды)"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <!-- Раздел I = U/R -->
+                <Border Background="#CCFFFFFF" CornerRadius="22.5" Padding="30" Margin="0,0,0,22.5">
+                    <StackPanel>
+                        <TextBlock Text="2. Закон Ома: I = U/R" 
+                               Style="{StaticResource SectionHeaderStyle}"
+                               Foreground="#EA4335"/>
+                        <TextBlock Style="{StaticResource HelpTextStyle}">
+                            <Run Text="Формула, выражающая закон Ома для участка цепи:"/>
+                            <Run Text=" I = U/R" FontWeight="Bold"/>
+                            <LineBreak/><LineBreak/>
+                            <Run Text="Где:"/>
+                            <LineBreak/>
+                            <Run Text="- I - сила тока (Ампер)"/>
+                            <LineBreak/>
+                            <Run Text="- U - напряжение (Вольт)"/>
+                            <LineBreak/>
+                            <Run Text="- R - сопротивление (Ом)"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <!-- Раздел I = √(Q/(R·t)) -->
+                <Border Background="#CCFFFFFF" CornerRadius="22.5" Padding="30" Margin="0,0,0,22.5">
+                    <StackPanel>
+                        <TextBlock Text="3. Формула I = √(Q/(R·t))" 
+                               Style="{StaticResource SectionHeaderStyle}"
+                               Foreground="#FBBC05"/>
+                        <TextBlock Style="{StaticResource HelpTextStyle}">
+                            <Run Text="Формула, связывающая ток с тепловым действием:"/>
+                            <Run Text=" I = √(Q/(R·t))" FontWeight="Bold"/>
+                            <LineBreak/><LineBreak/>
+                            <Run Text="Где:"/>
+                            <LineBreak/>
+                            <Run Text="- I - сила тока (Ампер)"/>
+                            <LineBreak/>
+                            <Run Text="- Q - количество теплоты (Джоуль)"/>
+                            <LineBreak/>
+                            <Run Text="- R - сопротивление (Ом)"/>
+                            <LineBreak/>
+                            <Run Text="- t - время (секунды)"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <!-- Раздел "Дополнительные сведения" -->
+                <Border Background="#CCFFFFFF" CornerRadius="22.5" Padding="30" Margin="0,0,0,22.5">
+                    <StackPanel>
+                        <TextBlock Text="4. Дополнительные сведения" 
+                               Style="{StaticResource SectionHeaderStyle}"
+                               Foreground="#34A853"/>
+                        <TextBlock Style="{StaticResource HelpTextStyle}">
+                            <Run Text="Постоянный ток (DC - Direct Current) - это электрический ток, который не изменяет своего направления и величины с течением времени. В отличие от переменного тока (AC), постоянный ток широко используется в электронике, автомобильных системах, солнечных батареях и других устройствах, требующих стабильного напряжения."/>
+                            <LineBreak/><LineBreak/>
+                            <Run Text="Основные характеристики постоянного тока:"/>
+                            <LineBreak/>
+                            <Run Text="- Направленное движение заряженных частиц (обычно электронов)"/>
+                            <LineBreak/>
+                            <Run Text="- Постоянная величина напряжения и силы тока"/>
+                            <LineBreak/>
+                            <Run Text="- Используется в аккумуляторах, батареях, блоках питания"/>
+                            <LineBreak/><LineBreak/>
+                            <Run Text="Историческая справка: первые исследования постоянного тока проводились Алессандро Вольта, который изобрел вольтов столб в 1800 году. Томас Эдисон был ярым сторонником систем распределения постоянного тока, что привело к 'войне токов' с Джорджем Вестингаузом и Николой Тесла, продвигавшими переменный ток."/>
+                            <LineBreak/><LineBreak/>
+                            <Run Text="Преимущества постоянного тока:"/>
+                            <LineBreak/>
+                            <Run Text="1. Простота накопления в аккумуляторах и батареях"/>
+                            <LineBreak/>
+                            <Run Text="2. Стабильность параметров для чувствительной электроники"/>
+                            <LineBreak/>
+                            <Run Text="3. Меньшие потери при передаче на высоких напряжениях (HVDC системы)"/>
+                            <LineBreak/>
+                            <Run Text="4. Безопаснее для низковольтных устройств"/>
+                            <LineBreak/><LineBreak/>
+                            <Run Text="Применение в современной технике:"/>
+                            <LineBreak/>
+                            <Run Text="- Все цифровые устройства (компьютеры, смартфоны, планшеты)"/>
+                            <LineBreak/>
+                            <Run Text="- Автомобильная электроника и системы зажигания"/>
+                            <LineBreak/>
+                            <Run Text="- Солнечные энергосистемы и ветрогенераторы"/>
+                            <LineBreak/>
+                            <Run Text="- Медицинское оборудование (томографы, дефибрилляторы)"/>
+                            <LineBreak/>
+                            <Run Text="- Промышленные процессы (электролиз, гальваника)"/>
+                            <LineBreak/><LineBreak/>
+                            <Run Text="Интересные факты:"/>
+                            <LineBreak/>
+                            <Run Text="- Первая коммерческая электростанция Эдисона в 1882 году использовала постоянный ток"/>
+                            <LineBreak/>
+                            <Run Text="- Современные сверхпроводящие линии передач используют постоянный ток"/>
+                            <LineBreak/>
+                            <Run Text="- КПД преобразователей постоянного тока достигает 98%"/>
+                            <LineBreak/>
+                            <Run Text="- В космических аппаратах используется только постоянный ток"/>
+                        </TextBlock>
+
+                        <TextBlock Style="{StaticResource HelpTextStyle}">
+                            <Run Text="Безопасность при работе с постоянным током:"/>
+                            <LineBreak/>
+                            <Run Text="Хотя постоянный ток считается менее опасным чем переменный, при напряжениях выше 120 В он может представлять серьезную угрозу. Особенность постоянного тока - он вызывает устойчивое сокращение мышц, что может привести к 'прилипанию' к источнику тока. При работе с мощными источниками DC всегда следует использовать средства индивидуальной защиты и соблюдать правила электробезопасности."/>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Кнопка закрытия -->
+        <Button Grid.Row="2" Content="Закрыть" Width="180" Height="52.5" 
+        HorizontalAlignment="Center" Margin="0,30"
+        Click="Close_Click" 
+        Style="{StaticResource RoundedButtonStyle}"
+        Background="#E74C3C"
+        BorderBrush="#C0392B"
+        IsCancel="True"/>
+    </Grid>
+</Window>
